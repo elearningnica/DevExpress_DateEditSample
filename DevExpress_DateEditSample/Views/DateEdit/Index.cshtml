@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "DateEdit", FormMethod.Post))
+{
+    @Html.DevExpress().DateEdit(settings =>
+    {
+        settings.Name = "dvDE";
+        settings.Properties.NullText = "Please pick a date";
+        settings.Theme = "Material";
+
+        settings.Properties.UseMaskBehavior = true;
+        settings.Properties.EditFormat = EditFormat.Custom;
+        settings.Date = new DateTime(2000, 01, 01);
+        settings.Properties.EditFormatString = "dd/MM/yyyy hh:mm tt";
+        settings.Properties.TimeSectionProperties.Visible = true;
+        settings.Properties.TimeSectionProperties.Adaptive = true;
+        settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormat = EditFormat.Custom;
+        settings.Properties.TimeSectionProperties.TimeEditProperties.EditFormatString = "hh:mm tt";
+
+        settings.Properties.CalendarProperties.FastNavProperties.DisplayMode = FastNavigationDisplayMode.Inline;
+
+    }).GetHtml()
+    <input type="submit" value="Submit" class="btn btn-primary" />
+}
+
+
+
